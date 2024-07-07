@@ -31,7 +31,7 @@ def get_latest_history():
 
 class ScreenshotApp:
     def __init__(self, run_duration_minutes=5):
-        self.save_directory = os.path.expanduser("~/Desktop/aiagentshack/images")
+        self.save_directory = os.path.join(os.getcwd(), "images")
         self.interval = 10  # Time between screenshots in seconds
         self.max_screenshots = 10  # Maximum number of screenshots to keep
         self.screenshots = []
@@ -66,7 +66,7 @@ class ScreenshotApp:
         # Start checking for popups in the main thread
         self.root = tk.Tk()
         self.root.withdraw()  # Hide the main window
-        self.root.after(0 * 1000, self.check_for_popup)
+        self.root.after(10 * 1000, self.check_for_popup)
         self.root.after(100, self.check_time_limit)
         self.root.mainloop()
 
@@ -111,7 +111,7 @@ class ScreenshotApp:
             pass
         finally:
             # Schedule the next check
-            self.root.after(100, self.check_for_popup)
+            self.root.after(1000, self.check_for_popup)
     # def show_popup(self, relative_directory):
     #     metadata = json.loads(get_latest_history()[3])
     #     if not check_if_show_popup():
@@ -325,7 +325,7 @@ class ScreenshotApp:
             print("Time limit reached. Stopping the application.")
             self.stop()
         else:
-            self.root.after(1000, self.check_time_limit)  # Check every second
+            self.root.after(30*1000, self.check_time_limit)  # Check every second
 
     def stop(self):
         print("Stopping the application...")
@@ -344,7 +344,7 @@ def signal_handler(signum, frame):
 def main():
     global app
     signal.signal(signal.SIGINT, signal_handler)
-    app = ScreenshotApp(run_duration_minutes=1)  # Run for 5 minutes
+    app = ScreenshotApp(run_duration_minutes=2)  # Run for 5 minutes
     app.start()
 
 if __name__ == "__main__":
