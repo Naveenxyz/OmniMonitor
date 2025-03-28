@@ -166,7 +166,9 @@ option 2: working on the target focus task. So, note and wait. Note: we don't ha
 
 
 # Example usage
-api_key = "sk-proj-QslpKkzuoo3CHgVpmshGT3BlbkFJ3hzaZUkZKfaXVHnSAhbw"
+api_key = "sk-proj-QslpKkzuoo3CHgVpmshGT3BlbkFJ3hzaZUkZKfaXVHnSAhbw" 
+# this is a dummy key, i mean more like expired one that i deleted
+# I know it's bad but i was just prototyping sorry, please move it to env if you for some reason ever decide to use this repo
 current_task = "Integrate GenAI for Real-Time Query Analysis"
 other_planned_tasks = """
 - Develop User Interface for AI Agent Deployment
